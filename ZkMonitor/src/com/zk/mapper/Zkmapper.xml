@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zk.monitor.mapper.Zkmapper">
+    <select id="getOldInfo" resultType="com.zk.monitor.bean.ZkMidInfo">
+        select itemid, hostid from zabbix_items_zk
+    </select>
+
+    <insert id="insert" parameterType="com.zk.monitor.bean.ZkMidInfo">
+        INSERT INTO zabbix_items_zk VALUES (#{itemid},#{hostid},#{port},#{item},#{value_type},#{hostip},#{system_id},#{hostname})
+    </insert>
+
+    <select id="getItem" resultType="com.zk.monitor.bean.ZkMidInfo">
+        select * from zabbix_items_zk where item=#{item}
+    </select>
+
+    <select id="getInfo" resultType="com.zk.monitor.bean.ZkMidInfo">
+        select distinct hostip from zabbix_items_zk where item=#{item}
+    </select>
+
+    <select id="getzkinfo" resultType="com.zk.monitor.bean.Zkinfo">
+        select itemid, value from zk_newinfo where item=#{item}
+    </select>
+
+    <update id="update">
+        update zk_newinfo set hostip=#{hostip}, item=#{item},value=#{hostip},time=#{time}, item=#{item},
+        itemid=#{itemid},system_name=#{system_name}, sys3_A=#{sys3_A},online_time=#{online_time},
+        short_name=#{short_name},hostname=#{hostname},port=#{port},system_id=#{system_id} where itemid=#{itemid}
+    </update>
+
+    <insert id="add" parameterType="com.zk.monitor.bean.Zkinfo">
+        insert into zk_newinfo values (#{hostip},#{item},#{value},#{time},#{itemid},#{system_name},
+        #{sys3_A},#{online_time},#{short_name},#{hostname},#{port},#{system_id})
+    </insert>
+
+    <select id="getip" resultType="com.zk.monitor.bean.ZkMidInfo">
+        select * from zabbix_items_zk where hostip=#{hostip}
+    </select>
+
+    <select id="getipinfo" resultType="com.zk.monitor.bean.Zkinfo">
+        select itemid, value from zk_newinfo where hostip=#{hostip}
+    </select>
+
+    <select id="query" resultType="com.zk.monitor.bean.ZkMidInfo">
+        select distinct hostip from zabbix_items_zk
+    </select>
+
+
+
+</mapper>
