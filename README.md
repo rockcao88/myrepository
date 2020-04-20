@@ -1,3 +1,3 @@
-＃myrepository
-这是一篇关于zookeeper监控的项目
-监控工具是zabbix
+＃myrepositor
+对zookeeper的实行监控的工具是zabbix
+开发语言java
