@@ -1,3 +1,3 @@
-＃myrepositor
+
 对zookeeper的实行监控的工具是zabbix
 开发语言java
